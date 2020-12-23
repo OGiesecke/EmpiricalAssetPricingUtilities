@@ -1,3 +1,9 @@
+import zipfile
+import io
+from io import BytesIO
+import pandas as pd
+import requests
+
 def import_zip(url,skiprows_v=0):
     r = requests.get(url)
     zf = zipfile.ZipFile(BytesIO(r.content))
