@@ -1,6 +1,6 @@
 import numpy as np
 
-def test_on_SRs(vR1,vR2,ik):
+def test_on_SR(vR1,vR2,ik):
     
     vR1 = vR1.to_numpy()
     vR2 = vR2.to_numpy()
