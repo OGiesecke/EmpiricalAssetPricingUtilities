@@ -18,7 +18,7 @@ def test_on_SRs(vR1,vR2,ik):
     
     mV      = np.zeros((4,4))
     for j in range(-ik,ik+1):
-        print(j)
+        
         maux    = np.zeros((4,4))
         
         for t in range(np.max((0,j)) , dT+np.min((0,j)) ) :
