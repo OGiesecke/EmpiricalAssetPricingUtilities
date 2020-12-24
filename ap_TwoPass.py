@@ -1,7 +1,8 @@
 import pandas as pd
 import numpy as np
 from python_nw import newey
-
+from scipy.stats import f
+from scipy.stats import chi2
 
 def ap_TwoPass(mr,mf,ishanken_correction):
     dT, dN = mr.shape
