@@ -1,9 +1,10 @@
 import pandas as pd
 import numpy as np
+from python_nw import newey
 
 
 
-def ap_FMB(mr,mf):   
+def ap_FMB(mr,mf):
     # Initialize
 
     dT, dN = mr.shape

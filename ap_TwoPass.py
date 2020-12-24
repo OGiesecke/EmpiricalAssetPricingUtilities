@@ -1,5 +1,7 @@
 import pandas as pd
 import numpy as np
+from python_nw import newey
+
 
 def ap_TwoPass(mr,mf,ishanken_correction):
     dT, dN = mr.shape
