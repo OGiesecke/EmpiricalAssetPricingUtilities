@@ -19,3 +19,6 @@ def import_df(url,name):
     for col in data.columns:
         data[col]=data[col].apply(lambda x:float(x)/100)
     return data
+
+
+    
