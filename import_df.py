@@ -12,8 +12,6 @@ def import_zip(url,skiprows_v=0):
     df = pd.read_csv(zf.open(zipfile.ZipFile.namelist(zf)[0]), skiprows=skiprows_v)
     return df
 
-
-
 def import_df(url,name):
     data = import_zip(url,skiprows_v=3).rename(columns={"Unnamed: 0":"date"})
     data = data.loc[:data[data['Mkt-RF'].isna()].index.tolist()[0]-1,:]
