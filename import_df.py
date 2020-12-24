@@ -5,15 +5,12 @@ from io import BytesIO
 import pandas as pd
 import requests
 
-def import_zip(url,skiprows_v=0):
+def import_df(url,name):
     r = requests.get(url)
     zf = zipfile.ZipFile(BytesIO(r.content))
     print("Imported " + zipfile.ZipFile.namelist(zf)[0])
-    df = pd.read_csv(zf.open(zipfile.ZipFile.namelist(zf)[0]), skiprows=skiprows_v)
-    return df
+    data = pd.read_csv(zf.open(zipfile.ZipFile.namelist(zf)[0]), skiprows=skiprows_v).rename(columns={"Unnamed: 0":"date"})
 
-def import_df(url,name):
-    data = import_zip(url,skiprows_v=3).rename(columns={"Unnamed: 0":"date"})
     data = data.loc[:data[data['Mkt-RF'].isna()].index.tolist()[0]-1,:]
     data['date'] = data['date'].apply(lambda x:x.replace(" ",""))
     data["date"] = pd.to_datetime(data['date'],format="%Y%m")
