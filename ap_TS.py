@@ -2,7 +2,6 @@ import pandas as pd
 import numpy as np
 from python_nw import newey
 
-
 def ap_TS(mr,mf):
 
     dT, dN = mr.shape
