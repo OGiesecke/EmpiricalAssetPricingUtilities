@@ -9,7 +9,7 @@ def import_df(url,name):
     r = requests.get(url)
     zf = zipfile.ZipFile(BytesIO(r.content))
     print("Imported " + zipfile.ZipFile.namelist(zf)[0])
-    data = pd.read_csv(zf.open(zipfile.ZipFile.namelist(zf)[0]), skiprows=skiprows_v).rename(columns={"Unnamed: 0":"date"})
+    data = pd.read_csv(zf.open(zipfile.ZipFile.namelist(zf)[0]), skiprows=3).rename(columns={"Unnamed: 0":"date"})
 
     data = data.loc[:data[data['Mkt-RF'].isna()].index.tolist()[0]-1,:]
     data['date'] = data['date'].apply(lambda x:x.replace(" ",""))
@@ -19,6 +19,3 @@ def import_df(url,name):
     for col in data.columns:
         data[col]=data[col].apply(lambda x:float(x)/100)
     return data
-
-
-    
