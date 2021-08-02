@@ -51,7 +51,7 @@ def newey(y,x,nlag):
      
     V=xpxi @ G @ xpxi; 
     nwerr= np.sqrt(np.diag(V))
-     
+    setattr(results,"se", nwerr) 
     setattr(results,"tstat", results.beta / nwerr)
     ym = y - np.mean(y)
     rsqr1 = sigu
